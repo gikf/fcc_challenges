@@ -19,8 +19,15 @@ function BinarySearchTree() {
         return [tree.value];
       }
 
-      const leftTraverse = traverse(tree.left);
-      const rightTraverse = traverse(tree.right);
+      let leftTraverse = [];
+      if (tree.left !== null) {
+        leftTraverse = traverse(tree.left);
+      }
+
+      let rightTraverse = [];
+      if (tree.right !== null) {
+        rightTraverse = traverse(tree.right);
+      }
 
       return leftTraverse.concat(tree.value).concat(rightTraverse);
     }
@@ -39,8 +46,15 @@ function BinarySearchTree() {
         return [tree.value];
       }
 
-      const leftTraverse = traverse(tree.left);
-      const rightTraverse = traverse(tree.right);
+      let leftTraverse = [];
+      if (tree.left !== null) {
+        leftTraverse = traverse(tree.left);
+      }
+
+      let rightTraverse = [];
+      if (tree.right !== null) {
+        rightTraverse = traverse(tree.right);
+      }
 
       return [tree.value].concat(leftTraverse, rightTraverse);
     }
@@ -59,8 +73,15 @@ function BinarySearchTree() {
         return [tree.value];
       }
 
-      const leftTraverse = traverse(tree.left);
-      const rightTraverse = traverse(tree.right);
+      let leftTraverse = [];
+      if (tree.left !== null) {
+        leftTraverse = traverse(tree.left);
+      }
+
+      let rightTraverse = [];
+      if (tree.right !== null) {
+        rightTraverse = traverse(tree.right);
+      }
 
       return leftTraverse.concat(rightTraverse, tree.value);
     }
