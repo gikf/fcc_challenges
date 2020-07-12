@@ -11,9 +11,8 @@ function entropy(s) {
 
   const chars_keys = Object.keys(chars);
   for (let i = 0; i < chars_keys.length; i++) {
-    let curEntropy = chars[chars_keys[i]] / length;
-    curEntropy *= Math.log2(chars[chars_keys[i]] / length);
-    entropy += - curEntropy;
-  } 
+    const value= chars[chars_keys[i]] / length;
+    entropy -= value * Math.log(value) / Math.log(2);
+  }
   return entropy;
 }
