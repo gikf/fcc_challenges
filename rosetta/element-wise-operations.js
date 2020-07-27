@@ -6,10 +6,10 @@ function operation(op, arr1, arr2) {
       }
     }
   }
-  function scalar_action(action, scalar, result) {
+  function scalar_action(action, result) {
     for (let i = 0; i < arr1.length; i++) {
       for (let j = 0; j < arr1[0].length; j++) {
-        result[i][j] = action(arr1[i][j], scalar)
+        result[i][j] = action(arr1[i][j], arr2)
       }
     }
   }
@@ -29,11 +29,10 @@ function operation(op, arr1, arr2) {
     'exp': (a, b) => a**b,
   }
 
-  const scalar = 2;
   const [operation, action] = op.split('_');
 
   if (operation == 's') {
-    scalar_action(actions[action], scalar, result)
+    scalar_action(actions[action], result)
   } else if (operation == 'm') {
     matrix_action(actions[action], result)
   }
