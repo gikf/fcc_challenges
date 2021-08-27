@@ -30,10 +30,10 @@ var MaxHeap = function() {
       let curChild1 = curParent * 2;
       let curChild2 = curParent * 2 + 1;
 
-      const child1_compare = this.heap[curParent] < this.heap[curChild1];
+      const child1_compare = this.heap[curParent] > this.heap[curChild1];
       const child1_compare_or_nan = child1_compare || isNaN(this.heap[curChild1]);
       
-      const child2_compare = this.heap[curParent] < this.heap[curChild2];
+      const child2_compare = this.heap[curParent] > this.heap[curChild2];
       const child2_compare_or_nan = child2_compare || isNaN(this.heap[curChild2]);
 
       if (child1_compare_or_nan && child2_compare_or_nan) {
