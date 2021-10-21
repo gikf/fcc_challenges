@@ -19,8 +19,7 @@ echo "$($PSQL "SELECT ROUND(AVG(winner_goals), 2) FROM games")"
 echo -e "\nAverage number of goals in all games from both teams:"
 echo "$($PSQL "SELECT AVG(winner_goals + opponent_goals) FROM games")"
 
-echo -e "\nMost goals scored in a single game:"
-# echo "$($PSQL "SELECT MAX(winner_goals + opponent_goals) FROM games")"
+echo -e "\nMost goals scored in a single game by one team:"
 echo "$($PSQL "SELECT MAX(winner_goals) FROM games")"
 
 echo -e "\nNumber of games where the winning team scored more than two goals:"
@@ -32,21 +31,16 @@ echo "$($PSQL "
 	LEFT JOIN teams ON teams.team_id = games.winner_id
 	WHERE year = 2018 AND round = 'Final'")"
 
-echo -e "\nList of teams who played in the 2014 'Eight-final' round:"
+echo -e "\nList of teams who played in the 2014 'Eighth-Final' round:"
 echo "$($PSQL "
-  SELECT name FROM teams
+  SELECT DISTINCT(name) FROM teams
 	LEFT JOIN games ON teams.team_id = games.winner_id OR teams.team_id = games.opponent_id
 	WHERE round = 'Eighth-Final' and year = 2014
-	GROUP BY name
 	ORDER BY name")"
 
 echo -e "\nList of unique winning team names in the whole data set:"
-# echo "$($PSQL "
-#   SELECT DISTINCT(name) FROM games
-# 	LEFT JOIN teams ON games.winner_id = teams.team_id
-# 	ORDER BY name")"
 echo "$($PSQL "
-  SELECT name FROM games
+  SELECT DISTINCT(name) FROM games
 	LEFT JOIN teams ON games.winner_id = teams.team_id
 	GROUP BY name
 	ORDER BY name")"
